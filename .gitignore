@@ -1,0 +1,5 @@
+configstore/
+fish/
+pip/
+tmux/plugins/
+.DS_Store
