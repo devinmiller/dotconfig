@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+apk update
+# required for building neovim
+apk add --no-cache git build-base cmake coreutils curl gettext-tiny-dev ninja-build 
+
+git clone https://github.com/neovim/neovim  $HOME/src/neovim
+cd $HOME/src/neovim
+git fetch
+git checkout stable
+make CMAKE_BUILD_TYPE=Release
+make install
