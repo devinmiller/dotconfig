@@ -1,6 +1,6 @@
 FROM debian:stable
 
-ENV TERM="xterm-256colors"
+ENV TERM="xterm-256color"
 
 # Switch to working directory
 WORKDIR /workspace

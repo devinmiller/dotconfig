@@ -51,3 +51,4 @@ copy_dir() {
 log "--------- dev-env ---------"
 
 copy_dir .config $XDG_CONFIG_HOME
+copy_dir .local $HOME/.local
