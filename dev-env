@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-
-script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 dry_run="0"
 
 while [[ $# > 0 ]]; do
@@ -12,9 +10,9 @@ done
 
 log() {
   if [[ $dry_run == "1" ]]; then
-    echo "[DRY_RUN]: $1"
+    echo "[DRY_RUN]: $@"
   else
-    echo "$1"
+    echo "$@"
   fi
 }
 
@@ -27,5 +25,29 @@ execute() {
   "$@"
 }
 
+if [ -z "$XDG_CONFIG_HOME" ]; then
+    echo "no xdg config home"
+    echo "using ~/.config"
+    XDG_CONFIG_HOME=$HOME/.config
+
+    if [ ! -d $XDG_CONFIG_HOME ]; then
+        execute mkdir -p $XDG_CONFIG_HOME
+    fi
+fi
+
+copy_dir() {
+  from=$1
+  to=$2
+
+  pushd $1
+  dirs=$(find . -mindepth 1 -maxdepth 1 -type d -printf "%P\n")
+  for dir in $dirs; do
+    execute rm -rf $to/$dir
+    execute cp -r $dir $to/$dir
+  done
+  popd
+}
 
 log "--------- dev-env ---------"
+
+copy_dir .config $XDG_CONFIG_HOME

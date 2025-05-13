@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
-apk update
+apt-get update
 # required for building neovim
-apk add --no-cache git build-base cmake coreutils curl gettext-tiny-dev ninja-build 
+apt-get install -y git ninja-build gettext cmake unzip curl
+# clean up
+apt-get clean
 
 git clone https://github.com/neovim/neovim  $HOME/src/neovim
 cd $HOME/src/neovim

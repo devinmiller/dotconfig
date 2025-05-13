@@ -1,7 +1,6 @@
-FROM alpine:3.18 AS build
+FROM debian:stable
 
-# Install dependencies required for building Neovim
-RUN apk add --no-cache bash
+ENV TERM="xterm-256colors"
 
 # Switch to working directory
 WORKDIR /workspace
