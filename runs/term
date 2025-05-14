@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+apt update
+# required for building neovim
+apt install -y zsh fzf tmux
+# clean up
+apt clean
+
+# change default shell to zsh
+chsh -s $(which zsh)

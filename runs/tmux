@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-apt-get update
-# required for building neovim
-apt-get install -y tmux fzf 
-# clean up
-apt-get clean
