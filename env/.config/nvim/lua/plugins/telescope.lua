@@ -80,6 +80,7 @@ return {
       vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "[F]ind [D]iagnostics" })
       vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "[F]ind [B]uffers" })
       vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "[F]ind by [G]rep" })
+      vim.keymap.set("n", "<leader>fi", builtin.highlights, { desc = "[F]ind h[I]ghlights" })
     end
   }
 }
