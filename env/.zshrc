@@ -14,5 +14,7 @@ addToPathFront() {
   fi
 }
 
+addToPath /usr/local/go/bin
+
 addToPathFront $HOME/.local/scripts
 addToPathFront $HOME/.local/bin

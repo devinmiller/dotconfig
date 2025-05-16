@@ -3,8 +3,8 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
+      { "mason-org/mason.nvim", opt = {} },
+      "mason-org/mason-lspconfig.nvim",
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       {
         "folke/lazydev.nvim",
@@ -110,18 +110,6 @@ return {
               end,
             })
           end
-
-          local client = vim.lsp.get_client_by_id(event.data.client_id)
-
-          if client and client.supports_method('textDocument/formatting') then
-            -- Format the current buffer on save
-            vim.api.nvim_create_autocmd('BufWritePre', {
-              buffer = event.buf,
-              callback = function()
-                vim.lsp.buf.format({ bufnr = event.buf, id = client.id })
-              end,
-            })
-          end
         end,
       })
 
@@ -165,9 +153,20 @@ return {
         require('cmp_nvim_lsp').default_capabilities()
       )
 
+      -- Enable the following language servers
+      --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
+      --
+      --  Add any additional override configuration in the following tables. Available keys are:
+      --  - cmd (table): Override the default command used to start the server
+      --  - filetypes (table): Override the default list of associated filetypes for the server
+      --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
+      --  - settings (table): Override the default settings passed when initializing the server.
+      --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         lua_ls = {},
-        gopls = {},
+        gopls = {
+          gofumpt = true,
+        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -176,21 +175,23 @@ return {
       --    :Mason
       --
       --  You can press `g?` for help in this menu.
-      require('mason').setup()
-
+      --
+      -- `mason` had to be setup earlier: to configure its options see the
+      -- `dependencies` table for `nvim-lspconfig` above.
+      --
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
+      vim.list_extend(ensure_installed, {
+        'stylua',
+        'gofumpt',
+      })
 
-      require('mason-tool-installer').setup {
-        ensure_installed = {
-          'stylua',
-        }
-      }
+      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup({
-        automatic_installation = true,
-        ensure_installed = ensure_installed,
+        ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+        automatic_installation = false,
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
