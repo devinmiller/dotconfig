@@ -26,7 +26,8 @@ FROM neovim AS terminal
 RUN apt update && apt install -y \
   zsh \
   tmux \
-  fzf
+  fzf \
+  ripgrep
 
 RUN chsh -s $(which zsh)
 

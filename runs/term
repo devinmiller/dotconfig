@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 apt update
 # required for building neovim
-apt install -y zsh fzf tmux
+apt install -y zsh fzf tmux ripgrep
 # clean up
 apt clean
 

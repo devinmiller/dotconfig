@@ -1,16 +1,13 @@
 return {
-  'echasnovski/mini.nvim',
-  config = function()
-    local statusline = require 'mini.statusline'
-    local pairs = require 'mini.pairs'
-    local surround = require 'mini.surround'
-    local files = require 'mini.files'
-    local tabline = require 'mini.tabline'
-
-    files.setup {}
-    statusline.setup { use_icons = true }
-    pairs.setup {}
-    surround.setup {}
-    tabline.setup {}
-  end
+	"echasnovski/mini.nvim",
+	config = function()
+		-- Navigate and manipulate file system
+		require("mini.files").setup({})
+		-- Simple and easy statusline, set use_icons to true if you have a Nerd Font
+		require("mini.statusline").setup({ use_icons = vim.g.have_nerd_font })
+		-- Minimal and fast autopairs
+		require("mini.pairs").setup({})
+		-- Fast and feature-rich surround actions
+		require("mini.surround").setup({})
+	end,
 }
