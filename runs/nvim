@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+apt update
+# required for building neovim
+apt install -y git ninja-build gettext cmake unzip curl
+# clean up
+apt clean
+
+git clone https://github.com/neovim/neovim  $HOME/src/neovim
+cd $HOME/src/neovim
+git fetch
+git checkout stable
+make CMAKE_BUILD_TYPE=Release
+make install
