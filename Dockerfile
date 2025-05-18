@@ -3,7 +3,7 @@ FROM debian:stable AS neovim
 WORKDIR /tmp
 
 # install neovim dependencies
-RUN apt clean && apt update && apt install -y \
+RUN apt update && apt install -y \
   git \
   ninja-build \
   gettext \
