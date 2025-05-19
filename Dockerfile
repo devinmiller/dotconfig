@@ -55,4 +55,4 @@ WORKDIR /config
 RUN ["/bin/bash", "-c", "./dev-env"]
 
 # Set default command
-CMD ["/bin/zsh"] 
+CMD ["tail", "-f", "/dev/null"] 
