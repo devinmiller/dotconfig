@@ -5,4 +5,4 @@ if [[ -x ".ready-tmux" ]]; then
 elif [[ -x "$XDG_CONFIG_HOME/.ready-tmux" ]]; then
   "$XDG_CONFIG_HOME/.ready-tmux"
 fi
-cear
+clear
