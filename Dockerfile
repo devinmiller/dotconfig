@@ -33,7 +33,7 @@ RUN chsh -s $(which zsh)
 
 ENV TERM="xterm-256color"
 # Fixes font display issues with tmux
-ENV LC_ALL=en_IN.UTF-8
+# ENV LC_ALL=en_IN.UTF-8
 ENV LANG=en_IN.UTF-8
 
 FROM terminal AS code
