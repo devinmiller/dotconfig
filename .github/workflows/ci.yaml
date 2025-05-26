@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: [${{ vars.RUNS_ON }}] 
+    runs-on: ${{ vars.RUNS_ON }} 
     steps:
       # TODO: Clean up!
       - name: checkout
