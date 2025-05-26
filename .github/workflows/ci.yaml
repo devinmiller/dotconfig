@@ -12,7 +12,6 @@ jobs:
     # when using both Github and Gitea actions
     runs-on: ${{ vars.RUNS_ON }} 
     steps:
-    steps:
       - name: Checkout
         uses: actions/checkout@v4
       # Massively slows down the build without much benefit currently
