@@ -38,6 +38,10 @@ fi
 copy_dir() {
   to=$2
 
+  if [[ ! -d $to ]]; then
+    execute mkdir -p $to
+  fi
+
   pushd $1
   dirs=$(find . -mindepth 1 -maxdepth 1 -type d -printf "%P\n")
   for dir in $dirs; do
