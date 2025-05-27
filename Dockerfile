@@ -74,4 +74,4 @@ WORKDIR /workspace
 # Set default command
 ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["/bin/bash", "-c", "tail", "-f", "/dev/null"]
+CMD ["/bin/bash", "-c", "tail -f /dev/null"]
