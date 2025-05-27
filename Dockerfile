@@ -18,7 +18,7 @@ RUN git clone https://github.com/neovim/neovim  neovim && \
   git checkout stable && \
   make CMAKE_BUILD_TYPE=Release && \
   make install && \
-  rm -rf neovim
+  rm -rf ../neovim
 
 FROM neovim AS terminal
 
