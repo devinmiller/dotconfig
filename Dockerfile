@@ -29,6 +29,9 @@ RUN apt update && apt install -y \
   fzf \
   ripgrep
 
+# clean up
+RUN apt clean
+
 # change shell to zsh
 RUN chsh -s $(which zsh)
 
@@ -39,6 +42,13 @@ RUN curl -L https://go.dev/dl/go1.24.3.linux-amd64.tar.gz -o go1.24.3.linux-amd6
     rm -rf /usr/local/go && \
     tar -C /usr/local -xzf go1.24.3.linux-amd64.tar.gz && \
     rm go1.24.3.linux-amd64.tar.gz
+
+# install development tools
+RUN apt update && apt install -y \
+  postgresql-client 
+
+# clean up
+RUN apt clean
 
 FROM code
 
