@@ -6,6 +6,8 @@ vim.g.maplocalleader = " "
 
 vim.g.have_nerd_font = true
 
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
 vim.keymap.set("n", "<leader>mf", "<cmd>lua MiniFiles.open()<CR>", { desc = "Open [M]ini[F]iles" })
 vim.keymap.set("n", "<leader>tw", "<cmd>lua Translate.open()<CR>")
