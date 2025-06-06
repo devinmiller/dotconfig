@@ -27,7 +27,8 @@ RUN apt update && apt install -y \
   zsh \
   tmux \
   fzf \
-  ripgrep
+  ripgrep \
+  jq
 
 # clean up
 RUN apt clean
