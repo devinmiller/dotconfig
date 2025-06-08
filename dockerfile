@@ -83,6 +83,6 @@ RUN cd /home/neodev/config \
 WORKDIR /workspace
 
 # Set default command
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint"]
 
 CMD ["/bin/bash", "-c", "tail -f /dev/null"]
