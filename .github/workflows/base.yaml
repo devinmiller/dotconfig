@@ -31,7 +31,7 @@ jobs:
         with:
           images: ${{ secrets.DOCKER_REGISTRY }}${{ secrets.DOCKER_USERNAME }}/dev-env
           tags: |
-            type=sha
+            # type=sha
             type=match,pattern=base-v(\d.\d.\d),group=1
             # type=semver,pattern=v{{version}}
             # type=semver,pattern=v{{major}}.{{minor}}
