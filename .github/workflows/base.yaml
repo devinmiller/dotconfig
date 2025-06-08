@@ -41,5 +41,5 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: ${{ steps.meta.output.tags }} 
+          tags: ${{ steps.meta.outputs.tags }} 
 
