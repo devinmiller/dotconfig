@@ -53,7 +53,7 @@ RUN apt clean
 
 FROM code
 
-COPY entrypoint.sh /entrypoint.sh
+COPY entrypoint /entrypoint
 RUN chmod +x /entrypoint.sh
 
 # Fixes font display issues with tmux
