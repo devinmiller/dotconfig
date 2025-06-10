@@ -43,7 +43,7 @@ copy_dir() {
   fi
 
   pushd $1
-  dirs=$(find . -mindepth 1 -maxdepth 1 -type d -printf "%P\n")
+  dirs=$(find . -mindepth 1 -maxdepth 1 -type d | cut -c 3-)
   for dir in $dirs; do
     execute rm -rf $to/$dir
     execute cp -r $dir $to/$dir

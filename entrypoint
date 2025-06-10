@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
-if [[ -z "${UID}" ]]; then
-  sudo usermod -u ${UID} neodev
-fi
+USER_ID=${LOCAL_USER_ID:-1000}
+GROUP_ID=${LOCAL_GROUP_ID:-1000}
 
-if [[ -z "${GID}" ]]; then
-  sudo groupmod -g ${GID} neodev
-fi
+# Create the non root group
+groupadd -g $GROUP_ID neodev
+# Create the non root user
+useradd -d /home/neodev -s /bin/zsh -u $USER_ID neodev -g $GROUP_ID
 
-exec "$@"
+# Set home directory owner to new user 
+chown -R neodev:neodev /home/neodev
+
+exec gosu neodev "$@"
