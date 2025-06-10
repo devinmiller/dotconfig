@@ -39,7 +39,7 @@ jobs:
         with:
           push: true
           file: gopsql.dockerfile
-          build-args:
-            - BASE_IMAGE=${{ secrets.DOCKER_REGISTRY }}${{ secrets.DOCKER_USERNAME }}
+          build-args: |
+             BASE_IMAGE=${{ secrets.DOCKER_REGISTRY }}${{ secrets.DOCKER_USERNAME }}
           tags: ${{ steps.meta.outputs.tags }} 
 
