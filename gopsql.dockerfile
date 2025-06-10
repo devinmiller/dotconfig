@@ -8,14 +8,12 @@ RUN curl -L https://go.dev/dl/go1.24.3.linux-amd64.tar.gz -o go1.24.3.linux-amd6
     rm go1.24.3.linux-amd64.tar.gz
 
 # Make sure Goose is installed
-go install github.com/pressly/goose/v3/cmd/goose@latest
+RUN /usr/local/go/bin/go install github.com/pressly/goose/v3/cmd/goose@latest
 
 # install development tools
 RUN apt update && apt install -y \
   postgresql-client && \
   rm -rf /var/lib/apt/lists/*
-
-
 
 FROM base
 
@@ -36,6 +34,9 @@ ENV TERM="xterm-256color"
 
 # Create home directory for user
 RUN mkdir -p /home/neodev
+
+# Copy Go install files
+RUN cp -r $HOME/go /home/neodev
 
 # Copy config settings and scripts for user
 COPY env/.config /home/neodev/.config
