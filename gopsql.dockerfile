@@ -33,7 +33,8 @@ ENV LANG=en_IN.UTF-8
 ENV TERM="xterm-256color"
 
 # Create home directory for user
-RUN mkdir -p /home/neodev
+RUN mkdir -p /home/neodev && \
+    useradd -d /home/neodev -s /bin/zsh neodev
 
 # Copy Go install files
 RUN cp -r $HOME/go /home/neodev
@@ -43,10 +44,12 @@ COPY env/.config /home/neodev/.config
 COPY env/.local  /home/neodev/.local
 COPY env/.zshrc home/neodev/
 
+RUN chown -R neodev:neodev /home/neodev
+
 # switch to working directory
 WORKDIR /workspace
 
-# Set default command
-ENTRYPOINT ["/entrypoint"]
+# switch to neodev user
+USER neodev
 
 CMD ["/bin/bash", "-c", "tail -f /dev/null"]
