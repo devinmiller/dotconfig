@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Download the Go archive
+curl -L https://go.dev/dl/go1.24.3.linux-amd64.tar.gz -o go1.24.3.linux-amd64.tar.gz
+
+# Remove any previous Go installation and extract downloaded archive
+rm -rf /usr/local/go && tar -C /usr/local -xzf go1.24.3.linux-amd64.tar.gz
+
+# Remove Go archive
+rm go1.24.3.linux-amd64.tar.gz

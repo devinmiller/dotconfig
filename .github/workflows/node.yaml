@@ -1,10 +1,10 @@
-name: "Build Go Image"
+name: "Build Node Image"
 
 on:
   push:
-    tags: ["gopsql-v*"]
+    tags: ["node-v*"]
   pull_request:
-    tags: ["gopsql-v*"]
+    tags: ["node-v*"]
 
 jobs:
   build:
@@ -29,7 +29,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ secrets.DOCKER_REGISTRY }}${{ secrets.DOCKER_USERNAME }}/dev-gopsql
+          images: ${{ secrets.DOCKER_REGISTRY }}${{ secrets.DOCKER_USERNAME }}/dev-node
           tags: |
             type=sha
             type=match,pattern=gopsql-v(\d.\d.\d),group=1
@@ -38,7 +38,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          file: gopsql.dockerfile
+          file: node.dockerfile
           build-args: |
              BASE_IMAGE=${{ secrets.DOCKER_REGISTRY }}${{ secrets.DOCKER_USERNAME }}/dev-env
           tags: ${{ steps.meta.outputs.tags }} 

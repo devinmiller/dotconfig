@@ -18,16 +18,6 @@ RUN apt update && apt install -y \
 
 FROM base
 
-# install user tools
-RUN apt update && apt install -y \
-  gosu && \
-  rm -rf /var/lib/apt/lists/*
-
-# Entry script to modify UID/GID for Linux systems
-COPY entrypoint /entrypoint
-# Make sure entrypoint script is executable
-RUN chmod +x /entrypoint
-
 # Fixes font display issues with tmux
 ENV LANG=en_IN.UTF-8
 # Set terminal colors
