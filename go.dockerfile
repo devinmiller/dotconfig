@@ -16,6 +16,10 @@ RUN apt update && apt install -y \
   postgresql-client && \
   rm -rf /var/lib/apt/lists/*
 
+# Download and install NVM and NodeJS
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash && \
+    . ~/.bashrc && nvm install 22
+
 FROM base
 
 # Fixes font display issues with tmux

@@ -275,6 +275,10 @@ return {
 				gopls = {
 					gofumpt = true,
 				},
+				html = {},
+				eslint = {},
+				cssls = {},
+				jsonls = {},
 			}
 
 			-- Ensure the servers and tools above are installed
