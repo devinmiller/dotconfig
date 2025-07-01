@@ -16,7 +16,7 @@ ENV TERM="xterm-256color"
 RUN mkdir -p /home/neodev/.config && \
     useradd -d /home/neodev -s /bin/zsh neodev
 
-# Copy Go install files
+# Copy NVM install files
 RUN cp -r $HOME/.nvm /home/neodev/.config/nvm
 
 # Copy config settings and scripts for user

@@ -28,11 +28,14 @@ ENV LANG=en_IN.UTF-8
 ENV TERM="xterm-256color"
 
 # Create home directory for user
-RUN mkdir -p /home/neodev && \
+RUN mkdir -p /home/neodev/.config && \
     useradd -d /home/neodev -s /bin/zsh neodev
 
 # Copy Go install files
 RUN cp -r $HOME/go /home/neodev
+
+# Copy NVM install files
+RUN cp -r $HOME/.nvm /home/neodev/.config/nvm
 
 # Copy config settings and scripts for user
 COPY env/.config /home/neodev/.config
