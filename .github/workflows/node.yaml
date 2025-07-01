@@ -32,7 +32,7 @@ jobs:
           images: ${{ secrets.DOCKER_REGISTRY }}${{ secrets.DOCKER_USERNAME }}/dev-node
           tags: |
             type=sha
-            type=match,pattern=gopsql-v(\d.\d.\d),group=1
+            type=match,pattern=node-v(\d.\d.\d),group=1
       - name: Build and Push
         id: push
         uses: docker/build-push-action@v6
