@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# check if AWS CLI is installed
+if ! command -v aws &> /dev/null; then
+  echo "AWS CLI is not installed."
+  exit 1
+fi
+
+selected_profile=$(aws configure list-profiles | fzf)
+
+# make sure a profile is selected
+if [[ -z "$selected_profile" ]]; then
+  echo "No profile selected."
+  exit 1
+fi
+
+# start the login process
+aws sso login --profile "$selected_profile"
