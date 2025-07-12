@@ -43,6 +43,53 @@ return {
 					previewer = false,
 				}))
 			end)
+
+			local actions = require("telescope.actions")
+			local action_state = require("telescope.actions.state")
+
+			-- A very hack method to track how frequently I'm searching for definitions
+			-- in the various CSV files I have for learning Italian
+			vim.keymap.set("n", "<leader>fw", function()
+				builtin.live_grep(require("telescope.themes").get_dropdown({
+					previewer = false,
+					attach_mappings = function(prompt_bufnr, map)
+						map("i", "<CR>", function()
+							local selection = action_state.get_selected_entry()
+							-- Assume there is never a comma or escaped quotes in the first CSV entry
+							local word = selection.text:match('^"([^"]*)"') or selection.text:match("^([^,]*)")
+							-- Assume this project is in source control
+							local file_name = vim.fs.joinpath(vim.fs.root(0, ".git"), "lookups.csv")
+
+							local lookups = {}
+							-- Load the existing entries if any exist
+							if vim.fn.filereadable(file_name) == 1 then
+								local lines = vim.fn.readfile(file_name)
+								for _, line in ipairs(lines) do
+									local entry = vim.split(line, ",")
+									local key = entry[1]:gsub('"', "")
+									local value = entry[2]:gsub('"', "")
+
+									lookups[key] = value
+								end
+							end
+
+							lookups[word] = (lookups[word] or 0) + 1
+
+							local entries = {}
+							for key, value in pairs(lookups) do
+								table.insert(entries, string.format('"%s","%s"', key, tostring(value)))
+							end
+
+							vim.fn.writefile(entries, file_name)
+
+							actions.select_default(prompt_bufnr)
+						end)
+
+						return true
+					end,
+					glob_pattern = { "*.csv" },
+				}))
+			end)
 		end,
 	},
 }
