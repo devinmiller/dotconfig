@@ -1,6 +1,15 @@
-export XDG_CONFIG_HOME=$HOME/.config
+# load modules
+zmodload zsh/complist
+autoload -U compinit && compinit
+autoload -U colors && colors
+
+# cmp opts
+zstyle ':completion:*' menu select
+zstyle ':completion:*' special-dirs true
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^ap "aws-sso-picker\n"
 
 addToPath() {
   if [[ "$PATH" != *"$1"* ]]; then

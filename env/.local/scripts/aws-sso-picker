@@ -14,5 +14,21 @@ if [[ -z "$selected_profile" ]]; then
   exit 1
 fi
 
+echo "Selected profile $selected_profile."
+
+# check if the profile is already logged in
+if aws sts get-caller-identity --profile "$selected_profile" &> /dev/null; then
+  echo "Profile already authenticated."
+  exit 0
+fi
+
 # start the login process
 aws sso login --profile "$selected_profile"
+
+# confirm login was successful
+if ! aws sts get-caller-identity --profile "$selected_profile" &> /dev/null; then
+  echo "Login failed."
+  exit 1
+fi
+
+echo "Login successful."
