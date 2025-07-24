@@ -18,6 +18,9 @@ List of available configurations provided by nvim-lspconfig.
 
 [TPM](https://github.com/tmux-plugins/tpm)
 
+> [!NOTE]
+> This needs to be manually installed
+
 Github page for Tmux Plugin Manager
 
 [Arch Linux fzf Man Page](https://man.archlinux.org/man/fzf.1)
