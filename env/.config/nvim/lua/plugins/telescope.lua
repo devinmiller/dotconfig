@@ -79,6 +79,7 @@ return {
 							for key, value in pairs(lookups) do
 								table.insert(entries, string.format('"%s","%s"', key, tostring(value)))
 							end
+							table.sort(entries)
 
 							vim.fn.writefile(entries, file_name)
 
