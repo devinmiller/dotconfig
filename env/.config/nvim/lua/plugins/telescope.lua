@@ -36,6 +36,8 @@ return {
 			vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "[F]ind [B]uffers" })
 			vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "[F]ind by [G]rep" })
 			vim.keymap.set("n", "<leader>fi", builtin.highlights, { desc = "[F]ind h[I]ghlights" })
+			vim.keymap.set("n", "<leader>fq", builtin.quickfix, { desc = "[F]ind [Q]uickfixes" })
+			vim.keymap.set("n", "<leader>fm", builtin.marks, { desc = "[F]ind [M]arks" })
 
 			vim.keymap.set("n", "<leader>/", function()
 				builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({

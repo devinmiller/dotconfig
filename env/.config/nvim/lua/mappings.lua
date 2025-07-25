@@ -26,8 +26,8 @@ vim.keymap.set("n", "<leader>tc", "<cmd>lua Translate.close()<CR>")
 
 -- Keybinds for managing tabs
 vim.keymap.set("n", "<C-t>", "<cmd>tab split<CR>", { desc = "Move window to new [t]ab" })
-vim.keymap.set("n", "<C-[>", "<cmd>tabp<CR>", { desc = "Move to the [p]revious tab" })
-vim.keymap.set("n", "<C-]>", "<cmd>tabn<CR>", { desc = "Move to the [n]ext tab " })
+vim.keymap.set("n", "<M-[>", "<cmd>tabp<CR>", { desc = "Move to the [p]revious tab" })
+vim.keymap.set("n", "<M-]>", "<cmd>tabn<CR>", { desc = "Move to the [n]ext tab " })
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
