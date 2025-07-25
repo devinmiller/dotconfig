@@ -96,7 +96,55 @@ return {
         example   = { raw = '[!EXAMPLE]',   rendered = '󰉹 Example',   highlight = 'RenderMarkdownHint' ,   category = 'obsidian' },
         quote     = { raw = '[!QUOTE]',     rendered = '󱆨 Quote',     highlight = 'RenderMarkdownQuote',   category = 'obsidian' },
         cite      = { raw = '[!CITE]',      rendered = '󱆨 Cite',      highlight = 'RenderMarkdownQuote',   category = 'obsidian' },
-      }
+      },
+      checkbox = {
+        enabled = true,
+        render_modes = false,
+        bullet = false,
+        right_pad = 1,
+        unchecked = {
+            icon = '󰄱 ',
+            highlight = 'RenderMarkdownUnchecked',
+            scope_highlight = nil,
+        },
+        checked = {
+            icon = '󰱒 ',
+            highlight = 'RenderMarkdownChecked',
+            scope_highlight = nil,
+        },
+        custom = {
+            todo = { raw = '[-]', rendered = '󰥔 ', highlight = 'RenderMarkdownTodo', scope_highlight = nil },
+        },
+    },
+    bullet = {
+        enabled = true,
+        render_modes = false,
+        icons = { '●', '○', '◆', '◇' },
+        ordered_icons = function(ctx)
+            local value = vim.trim(ctx.value)
+            local index = tonumber(value:sub(1, #value - 1))
+            return ('%d.'):format(index > 1 and index or ctx.index)
+        end,
+        left_pad = 0,
+        right_pad = 0,
+        highlight = 'RenderMarkdownBullet',
+        scope_highlight = {},
+    },
+    quote = { icon = '▋' },
+    anti_conceal = {
+        enabled = true,
+        -- Which elements to always show, ignoring anti conceal behavior. Values can either be
+        -- booleans to fix the behavior or string lists representing modes where anti conceal
+        -- behavior will be ignored. Valid values are:
+        --   head_icon, head_background, head_border, code_language, code_background, code_border,
+        --   dash, bullet, check_icon, check_scope, quote, table_border, callout, link, sign
+        ignore = {
+            code_background = true,
+            sign = true,
+        },
+        above = 0,
+        below = 0,
+    },
     },
 	},
 }
