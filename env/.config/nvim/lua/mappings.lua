@@ -20,7 +20,6 @@ vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<CR>")
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Exit terminal mode" })
 
-vim.keymap.set("n", "<leader>mf", "<cmd>lua MiniFiles.open()<CR>", { desc = "Open [M]ini[F]iles" })
 vim.keymap.set("n", "<leader>tw", "<cmd>lua Translate.open()<CR>")
 vim.keymap.set("n", "<leader>tc", "<cmd>lua Translate.close()<CR>")
 
@@ -28,6 +27,10 @@ vim.keymap.set("n", "<leader>tc", "<cmd>lua Translate.close()<CR>")
 vim.keymap.set("n", "<C-t>", "<cmd>tab split<CR>", { desc = "Move window to new [t]ab" })
 vim.keymap.set("n", "<M-[>", "<cmd>tabp<CR>", { desc = "Move to the [p]revious tab" })
 vim.keymap.set("n", "<M-]>", "<cmd>tabn<CR>", { desc = "Move to the [n]ext tab " })
+
+-- Keybindings for managing buffers
+vim.keymap.set("n", "<M-{>", "<cmd>bprev<CR>", { desc = "Move to previous buffer" })
+vim.keymap.set("n", "<M-}>", "<cmd>bnext<CR>", { desc = "Move to next buffer" })
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows

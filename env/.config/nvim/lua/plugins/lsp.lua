@@ -107,6 +107,10 @@ return {
 					--  Useful when you're not sure what type a variable is and you want to see
 					--  the definition of its *type*, not where it was *defined*.
 					map("grt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype Definition")
+					--
+					-- Show diagnostic message on the current line in a floating window
+					-- Useful for viewing extremely long diagnostic messages
+					map("grv", vim.diagnostic.open_float, "View Diagnostic Message")
 
 					-- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
 					---@param client vim.lsp.Client
