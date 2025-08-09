@@ -16,5 +16,10 @@ export NVM_DIR="$XDG_CONFIG_HOME/nvm"
 # add Go location to path
 export PATH="$GOBIN:$PATH"
 
+# add Linux homebrew location
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+# add variable for tmux shell
+export TMUX_SHELL=$(which zsh)
+
 export FZF_DEFAULT_OPTS="--style default --color dark --layout=default --height=100% --no-preview"
 export FZF_CTRL_R_OPTS="--style default --color dark --layout=default --height=100% --info inline --no-sort --no-preview" # separate opts for history widget
