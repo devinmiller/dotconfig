@@ -286,6 +286,7 @@ return {
 				ts_ls = {},
 				angularls = {},
 				emmet_language_server = {},
+				jdtls = {},
 			}
 
 			-- Ensure the servers and tools above are installed
