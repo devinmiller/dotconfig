@@ -18,6 +18,7 @@ export PATH="$GOBIN:$PATH"
 
 # add Linux homebrew location
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+export PATH="/home/linuxbrew/.linuxbrew/opt:$PATH"
 # add variable for tmux shell
 export TMUX_SHELL=$(which zsh)
 

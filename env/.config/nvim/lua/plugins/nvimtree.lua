@@ -17,10 +17,10 @@ return {
 						max = -1,
 					},
 				},
-				change_dir = {
-					restrict_above_cwd = true,
-				},
 				actions = {
+					change_dir = {
+						restrict_above_cwd = true,
+					},
 					open_file = {
 						quit_on_open = true,
 					},
