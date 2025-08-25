@@ -42,6 +42,7 @@ vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
 		-- Fixing a few styling issues around floating windows and themes
 		vim.api.nvim_set_hl(0, "FloatBorder", { bg = normal.bg })
 		vim.api.nvim_set_hl(0, "NormalFloat", { bg = normal.bg })
+		vim.api.nvim_set_hl(0, "Pmenu", { bg = normal.bg })
 		-- Fixing a few styling issues with Nvim Tree
 		vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = normal.bg })
 		vim.api.nvim_set_hl(0, "NvimTreeNormalFloat", { bg = normal.bg })
